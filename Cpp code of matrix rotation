@@ -1,0 +1,46 @@
+#include <iostream>
+#include <vector>
+#include<Algorithm>
+using namespace std;
+
+void transpose(vector<vector<int>> &v)
+{
+    for (int i = 0; i < v.size(); i++)
+    {
+        for (int j = 0; j < i; j++) // here we use "j<i" to avoid tow time swapping (mj diagonal chya ek side chya element la swap kel tr aapoaap dusrya side la pan swapping houn janar mhnun tya element la prt swap karnya chi garaj padnar nahi aani jr aapan ass hou dil tr after swpping of complete element of array aaplya prt same array midun janar)
+        {
+            swap(v[i][j], v[j][i]);
+        }
+    }
+}
+void Reverse_the_transpose(vector<vector<int>> &v)
+{
+    for (int i = 0; i < v.size(); i++)
+    {
+        reverse(v[i].begin(), v[i].end());
+    }
+}
+
+int main()
+{
+    int n;
+    cin >> n;
+    vector<vector<int>> v(n, vector<int>(n));
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < n; j++)
+        {
+            cin >> v[i][j];
+        }
+    }
+    transpose(v);
+    Reverse_the_transpose(v);
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < n; j++)
+        {
+            cout << v[i][j] << " ";
+        }
+        cout << endl;
+    }
+}
